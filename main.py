@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from database import get_contacts, save_contact, get_user
 from auth import create_token
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
@@ -32,6 +33,15 @@ def login(data: Login):
 @app.get("/admin/contacts")
 def admin_contacts():
     return get_contacts()
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 
