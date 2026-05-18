@@ -72,17 +72,22 @@ async function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const res = await fetch("https://chaotech-engineer.onrender.com", {
+  const response = await fetch("https://YOUR-RENDER-URL.onrender.com/login", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password })
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password
+    })
   });
 
-  const data = await res.json();
+  const data = await response.json();
 
+  console.log(data);
   alert(JSON.stringify(data));
 }
-
 
 function NotFound() {
   return `<div class="section"><h1>404</h1></div>`;
