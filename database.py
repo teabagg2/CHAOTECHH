@@ -1,3 +1,4 @@
+import sqlite3
 import os
 
 os.makedirs("database", exist_ok=True)
